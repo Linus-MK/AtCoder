@@ -23,14 +23,14 @@ def unite(x, y):
 		par[x] = y
 
 		temp = size[x] * size[y]
-		size[y] = size[x] + size[y] + 1
+		size[y] = size[x] + size[y]
 	else:
 		par[y] = x
 		if (rank[x] == rank[y]):
 			rank[x] += 11
 
 		temp = size[x] * size[y]
-		size[x] = size[x] + size[y] + 1
+		size[x] = size[x] + size[y]
 	return temp
 
 
@@ -43,7 +43,8 @@ par = list(n, 0)
 rank = list(n, 0)
 size = list(n, 1)
 '''
-par = [0]*n
+# par = [0]*n
+par = list(range(n))
 rank = [0]*n
 size = [1]*n
 
@@ -52,12 +53,16 @@ bridges = [[b[0]-1, b[1]-1] for b in bridges]
 
 fuben_list = [0]*m
 fuben = int(n * (n-1)/2)
+fuben_list[-1] = fuben
 
-for b in range(m-1,-1, -1):
+for b in range(m-1,0, -1):
+	# 最初の状態は1番目が崩れたあと：1番目を建設した後の状態は不要
 
 	decr = unite(bridges[b][0] , bridges[b][1])
 	fuben -= decr
-	fuben_list[b] = fuben
-	print(decr)
+	fuben_list[b-1] = fuben
 
-print(fuben_list)
+# print(fuben_list)
+
+for i in fuben_list:
+	print(i)
