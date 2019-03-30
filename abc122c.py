@@ -14,7 +14,7 @@ for i in range(N-1):
 length = len(start)
 for _ in range(Q):
 	left, right = map(int, input().split())
-	left -= 1
+	left -= 1 # 1-indexから0-indexに変更する
 	right -= 1
 
 	if length == 0:
