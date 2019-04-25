@@ -3,11 +3,11 @@
 
 # 蟻本p.197をpythonに移植
 
-V = -1 #頂点数
+V = 10 #頂点数。ここでは仮
 MAX_V = 10000 #最大頂点数。ここでは仮
-G[MAX_V] = [] #グラフの隣接リスト表現
-match[MAX_V] = [] #マッチングのペア
-used[MAX_V] = [] #DFSで既に調べたかのフラグ
+G = [[] for _ in range(V)] #グラフの隣接リスト表現
+match = [-1] * V #マッチングのペア
+used = [False] * V #DFSで既に調べたかのフラグ
 
 # uとvを結ぶ辺をグラフに追加する
 def add_edge(u, v):
@@ -19,7 +19,7 @@ def dfs(v):
 	used[v] = True
 	for u in G[v]:
 		w = match[u]
-		if(w<0 or (!used[w] and dfs(w) ) ):
+		if(w<0 or (not used[w] and dfs(w) ) ):
 			match[v] = u
 			match[u] = v
 			return True
@@ -36,7 +36,7 @@ def bipartite_matching():
 	for v in range(V):
 		if match[v] < 0:
 			# memset (used, 0, sizeof(used))
-			used = [0] * MAX_V
+			used = [False] * MAX_V
 
 			if (dfs(v)):
 				num_matching += 1
