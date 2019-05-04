@@ -3,6 +3,7 @@
 t, w = map(int, input().split())
 
 bit_mask = 0b1111111 #127, binary
+import sys
 
 for _ in range(t):
 	print(210)
@@ -16,9 +17,14 @@ for _ in range(t):
 
 	r1 = ans56 >> 56
 	r2 = (ans56 >> 28) & bit_mask
-#	r3 = ((ans56 - (r4<<14 + r5<<11 + r6<<9))>>18) & bit_mask
-	r3 = ((ans56 )>>18) & bit_mask
+	r3 = ((ans56 - (r4<<14 + r5<<11 + r6<<9))>>18) & bit_mask
+	r3 = ((ans56 - (r4*(2**14) + r5*(2**11) + r6*(2**9)))>>18) & bit_mask
+	r3_2 = ((ans56 )>>18) & bit_mask
 # 引いた効果が出ていない（=直上の2行が同じことをしている）ように見える。なんでや……
+	
+	if r3 != r3_2:
+		print("{0} {1}".format(r3,r3_2), file=sys.stderr)
+	print("{:b}".format(ans56), file=sys.stderr)
 
 	print("{0} {1} {2} {3} {4} {5}".format(r1,r2,r3,r4,r5,r6) )
 
