@@ -13,6 +13,8 @@ for i in range(m):
 	num_to_change = min(max_card, num_small)
 
 	# sort
-	values = values[num_to_change:num_small] + [num]*num_to_change + values[num_small:]
+	# values = values[num_to_change:num_small] + [num]*num_to_change + values[num_small:]
+	del  values[:num_to_change]
+	values[num_small - num_to_change : num_small - num_to_change] = [num]*num_to_change
 
 print (sum(values))
