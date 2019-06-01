@@ -1,5 +1,5 @@
 n, k = list(map(int, input().split() ))
-values = a = list(map(int, input().split() ))
+values = list(map(int, input().split() ))
 ans = 0
 
 left_pop_max = min(k, n)
