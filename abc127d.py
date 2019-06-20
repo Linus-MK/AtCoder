@@ -1,20 +1,28 @@
-# ひとまず毎回ソートするバージョン
-# Python 3, pypy ともにTLE
-import bisect
-
+from operator import itemgetter
 n, m = list(map(int, input().split() ))
 values = list(map(int, input().split() ))
 values.sort()
 
-for i in range(m):
-	max_card, num = list(map(int, input().split() ))
+card_change = [list(map(int, input().split() )) for _ in range(m)]
+card_change.sort(key = itemgetter(1))
+# 変更後の数をkeyとしてソート
 
-	num_small = bisect.bisect(values, num)
-	num_to_change = min(max_card, num_small)
+# X枚書き換えるとして、Xを全探索する方針で書いてみる
+now = sum(values)
+ans = sum(values)
+idx = m - 1
+for x in range(n):
+	now -= values[x]
 
-	# sort
-	# values = values[num_to_change:num_small] + [num]*num_to_change + values[num_small:]
-	del  values[:num_to_change]
-	values[num_small - num_to_change : num_small - num_to_change] = [num]*num_to_change
+	card_change[idx][0] -= 1 # 変更可能枚数
+	now += card_change[idx][1] # 変更後の値
 
-print (sum(values))
+	if now > ans:
+		ans = now
+
+	if card_change[idx][0] == 0:
+		idx -= 1
+		if idx < 0:
+			break
+
+print(ans)
