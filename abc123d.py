@@ -22,3 +22,9 @@ abc.sort(reverse = True)
 
 for i in range(k):
 	print(abc[i])
+
+# 参考
+# 上記コードでPython: 1838ms
+# 上記コードでPyPy: 727ms
+# appendコード（2箇所書き換え）でPython: 2つのケースでTLE
+# appendコード（2箇所書き換え）でPyPy: 743ms
