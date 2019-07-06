@@ -1,6 +1,7 @@
 # 二項係数を 10^9+7 で割った余りを求める
 # https://qiita.com/drken/items/3b4fdf0a78e7a138cd9a#5-%E4%BA%8C%E9%A0%85%E4%BF%82%E6%95%B0-ncr
 # https://qiita.com/Yaruki00/items/fd1fc269ff7fe40d09a6
+# https://www.hamayanhamayan.com/entry/2018/06/06/210256
 
 mod = 10**9 + 7
 
