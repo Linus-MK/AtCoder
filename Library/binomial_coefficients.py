@@ -35,5 +35,5 @@ for i in range(1, max_len + 1):
 
 def binomial_coefficients(n, k):
 	# n! / (k! * (n-k)! )
-	return factori_table[n] * factori_inv_table[k] * factori_inv_table[n-k]
+	return (factori_table[n] * factori_inv_table[k] * factori_inv_table[n-k]) % mod
 
