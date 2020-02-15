@@ -33,7 +33,6 @@ for rep in range(200000):
     x1 = random.randint(5, 990)
     x2 = x1 + 1
 
-    # if swap(x1, x2)でスコアが上がるなら
     if x1 != x2:
         temp_1 = scores[dan_block[x1]].copy()
         temp_2 = scores[dan_block[x2]].copy()
@@ -43,10 +42,22 @@ for rep in range(200000):
         temp_1[col_val[x2][0]] += col_val[x2][1]
         temp_2[col_val[x1][0]] += col_val[x1][1]
 
-        if max(temp_1) + max(temp_2) > max(scores[dan_block[x1]]) + max(scores[dan_block[x2]]):
+        after = max(temp_1) + max(temp_2)
+        before = max(scores[dan_block[x1]]) + max(scores[dan_block[x2]])
+
+        # if swap(x1, x2)でスコアが上がるなら
+        if after > before:
             ans_list[x1], ans_list[x2] = ans_list[x2], ans_list[x1]
             scores[dan_block[x1]] = temp_1
             scores[dan_block[x2]] = temp_2
+        # 2つの入れ替えが直接寄与しないことも多々あるので、その場合は確率0.5で入れ替える
+        elif after == before and random.random() > 0.5:
+            ans_list[x1], ans_list[x2] = ans_list[x2], ans_list[x1]
+            scores[dan_block[x1]] = temp_1
+            scores[dan_block[x2]] = temp_2
+
+
+
 
 
 for i in ans_list:
