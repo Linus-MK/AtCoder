@@ -1,22 +1,12 @@
+# 1971ms ギリギリだな……
+
 n, k = list(map(int, input().split()))
 
 mod = 10**9 + 7
 
-# x ** a をmodで割った余りを、O(log(a))時間で求める。
-def power(x, a):
-    if a == 0:
-        return 1
-    elif a == 1:
-        return x
-    elif a % 2 == 0:
-        return power(x, a//2) **2 % mod
-    else:
-        return power(x, a//2) **2 * x % mod
-
 # xの逆元を求める。フェルマーの小定理より、 x の逆元は x ^ (mod - 2) に等しい。計算時間はO(log(mod))程度。
-# https://qiita.com/Yaruki00/items/fd1fc269ff7fe40d09a6
 def modinv(x):
-    return power(x, mod-2)
+    return pow(x, mod-2, mod)
 
 # 二項係数の左側の数字の最大値を max_len　とする。nとかだと他の変数と被りそうなので。
 # factori_table = [1, 1, 2, 6, 24, 120, ...] 要は factori_table[n] = n!
@@ -51,5 +41,3 @@ else:
             ans += binomial_coefficients(n, j) * binomial_coefficients(n-1, j) 
             ans %= mod
     print(ans)
-
-# 22583772
