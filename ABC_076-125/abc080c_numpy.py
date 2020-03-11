@@ -1,5 +1,5 @@
 # bit全探索
-# 374ms
+# 1130ms 半端にnumpyを使うと却って遅い！
 
 n = int(input())
 eigyou = [list(map(int, input().split())) for _ in range(n)]
@@ -14,9 +14,10 @@ for i in range(1, 2**10):
     for digit in range(10):
         eigyou_here[10 - 1 - digit] = int(i & (2 ** digit) > 0)
     for j_shop in range(n):
-        coincide_time = 0
-        for time in range(10):
-            coincide_time += eigyou[j_shop][time] * eigyou_here[time]
+        import numpy as np
+        coincide_time = np.dot(eigyou[j_shop], eigyou_here)
+        # for time in range(10):
+        #     coincide_time += eigyou[j_shop][time] * eigyou_here[time]
         temp += profits[j_shop][coincide_time]
 
     ans = max(ans, temp)
