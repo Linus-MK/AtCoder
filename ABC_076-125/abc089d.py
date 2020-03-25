@@ -11,14 +11,29 @@
 # P_i = i%Dからiまで移動して来るのに必要な魔力（i<=Dなら0）
 # とすれば、毎回のクエリにはP_R - P_Lを出せばよく、定数時間で求まる
 
+h, w, d = list(map(int, input().split()))
 
 masu = h * w
-x_coord = [-1] * masu
-y_coord = [-1] * masu
+h_coord = [-1] * masu  # 座標は0-indexで取る
+w_coord = [-1] * masu
 
-distance_sum = [0] * sum
-for i in masu:
+for i in range(h):
+    temp = list(map(int, input().split()))
+    for j in range(w):
+        num = temp[j]
+        h_coord[num-1] = i
+        w_coord[num-1] = j
+
+distance_sum = [0] * masu
+for i in range(masu):
     if i < d:
         pass
     else:
-        distance_sum[i] = distance_sum[i-d] + abs(x_coord[1] - x_coord[1]) + abs(y_coord[1] - y_coord[1])
+        distance_sum[i] = distance_sum[i-d] + abs(h_coord[i] - h_coord[i-d]) + abs(w_coord[i] - w_coord[i-d])
+
+q = int(input())
+
+for qi in range(q):
+    l, r = list(map(int, input().split()))
+    print(distance_sum[r-1] - distance_sum[l-1])
+    
