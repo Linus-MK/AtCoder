@@ -18,9 +18,4 @@ for i in range(m):
     if nums[x] == 0:
         possibilities[x] = False
 
-ans = 0
-for j in range(n):
-    if possibilities[j]:
-        ans += 1
-print(ans)
-
+print(sum(possibilities))
