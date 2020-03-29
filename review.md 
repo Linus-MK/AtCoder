@@ -10,3 +10,8 @@ https://atcoder.jp/contests/aising2019/tasks/aising2019_c
 
 - ABC122　D問題 dif 1489 提出が超絶クソコードなのでちゃんと書き直す  
 https://atcoder.jp/contests/abc122/submissions/4700493
+
+- ABC138 E問題 dif 1223 
+  - 2020年3月29日 解説動画と首っ引きで提出してAC
+  - なんで俺の当初のコードはTLEになってしまったのか?
+  - どこをどう直せばACになったのか?
