@@ -1,4 +1,5 @@
 # Union-Find
+# 蟻本p.81
 
 # nが頂点数、mが辺の本数
 n, m = map(int, input().split())
