@@ -3,7 +3,7 @@ t = input()
 
 len_s = len(s)
 dp = [[-1 for _ in range(len_s)] for _ in range(26)]
-# dp[i][j] = いまsのj文字目にいる。次に探しているのはアルファベットのi文字目であるとき、次までの必要文字数。
+# dp[i][j] = いまsのj文字目にいる。次に探しているのはアルファベットのi文字目であるとき、次に出現する位置。
 # print(len(dp))
 # print(len(dp[0]))
 
@@ -11,8 +11,8 @@ for idx in range(len_s):
 
 	ch = s[idx]
 	i = ord(ch)-ord("a")
-#	for j in range(len_s):
 	if dp[i][0] == -1:
+		# 当該文字が初登場
 		dp[i] = [idx] * len_s
 	else:
 		temp = dp[i][idx]
