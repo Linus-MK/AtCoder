@@ -6,13 +6,16 @@ from itertools import permutations
 N = int(input())
 
 # matrix = []
-perm_list = permutations(range(1, N+ 1))
+# perm_list = permutations(range(1, N+ 1)) 
+# だとイテレータができるので、1回最後まで行くとそこで探索終了になる。リストにする必要あり。
+perm_list = list(permutations(range(1, N+ 1)))
 
 
-def check(matrix, n_row, perm):
+def check(matrix_old, n_row, perm):
     # n_row は 0-index
+    global perm_list
 
-    matrix.append(perm)
+    matrix = matrix_old + [perm]
     print(n_row, matrix)
 
     # ラテン方陣として不適格か判定する
