@@ -1,5 +1,7 @@
 # https://...
 
+# N=6で試してみたら、22:49→23:09まで20分やっても答えが出なかったので諦めました。爆発的増加がヤバい。
+
 
 from itertools import permutations
 
@@ -10,6 +12,7 @@ N = int(input())
 # だとイテレータができるので、1回最後まで行くとそこで探索終了になる。リストにする必要あり。
 perm_list = list(permutations(range(1, N+ 1)))
 count = 0
+trace_list = []
 
 def check(matrix_old, n_row, perm):
     # n_row は 0-index
@@ -29,6 +32,14 @@ def check(matrix_old, n_row, perm):
     if n_row == N-1:
         # print('found a new laten matrix')
         # print(matrix)
+        trace = 0
+        for ii in range(N):
+            trace += matrix[ii][ii]
+        if trace not in trace_list:
+            trace_list.append(trace)
+            print("trace: ", trace)
+            print(matrix)
+
         count += 1
 
 
