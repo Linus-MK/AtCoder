@@ -12,7 +12,7 @@ n, k = list(map(int, input().split()))
 mod = 10 ** 9 + 7
 
 n_power_table = [-1] * (k+1)
-for i in range(k):
+for i in range(k+1):
     n_power_table[i] = pow(i, n, mod)
 
 # 素数リストを作っておく
@@ -73,7 +73,7 @@ for g in range(1, k+1):
     # kosuu は、gcd = gとなる組み合わせの個数
     p = k // g
     
-    kosuu = pow(p, n, mod)
+    kosuu = n_power_table[p]
 
     for prime in prime_list:
         if prime > p:
