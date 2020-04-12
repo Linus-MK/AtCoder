@@ -7,7 +7,8 @@ def is_prime(num):
             return False
         d += 1
     return True
-    
+
+
 n, k = list(map(int, input().split()))
 mod = 10 ** 9 + 7
 
@@ -62,19 +63,7 @@ prime_4_list.sort()
 prime_5_list.sort()
 prime_6_list.sort()
 
-# prime_3_list = []
-# for i, p1 in enumerate(prime_list):
-#     for j, p1_ in enumerate(prime_2_list):
-#         if p1*p1_ > k:
-#             break
-#         prime_3_list.append(p1*p1_)
-
-# list(set(prime_3_list)).sort()
-
-# print(prime_3_list)
-
 ans = 0
-temp = 0
 
 for g in range(1, k+1):
     # kosuu は、gcd = gとなる組み合わせの個数
@@ -115,7 +104,5 @@ for g in range(1, k+1):
     kosuu %= mod
     ans += g * kosuu
     # print(g, kosuu)
-    temp += kosuu
 
 print(ans% mod)
-# print(temp)
