@@ -25,6 +25,7 @@ prime_2_list = []
 prime_3_list = []
 prime_4_list = []
 prime_5_list = []
+prime_6_list = []
 
 ll = len(prime_list)
 for i, p1 in enumerate(prime_list):
@@ -49,11 +50,17 @@ for i, p1 in enumerate(prime_list):
                     if p1*p2*p3*p4*p5 > k:
                         break
                     prime_5_list.append(p1*p2*p3*p4*p5)
+                    for y in range(x+1, ll):#, p5 in enumerate(prime_list[w+1:]):
+                        p6 = prime_list[y]
+                        if p1*p2*p3*p4*p5*p6 > k:
+                            break
+                        prime_6_list.append(p1*p2*p3*p4*p5*p6)
 
 prime_2_list.sort()
 prime_3_list.sort()
 prime_4_list.sort()
 prime_5_list.sort()
+prime_6_list.sort()
 
 # prime_3_list = []
 # for i, p1 in enumerate(prime_list):
@@ -99,6 +106,11 @@ for g in range(1, k+1):
         if prime > p:
             break
         kosuu -= n_power_table[p//prime]
+
+    for prime in prime_6_list:
+        if prime > p:
+            break
+        kosuu += n_power_table[p//prime]
 
     kosuu %= mod
     ans += g * kosuu
