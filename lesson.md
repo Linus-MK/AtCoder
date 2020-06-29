@@ -43,3 +43,10 @@ hidden
 ABC167 F
 括弧列の問題は折れ線に変換すると考えやすくなるよ
 https://youtu.be/ENSOy8u9K9I?t=7620
+
+---
+
+2020年6月28日  
+AGC044 A問題 Pay to Win  
+逆から考えるパターン。
+

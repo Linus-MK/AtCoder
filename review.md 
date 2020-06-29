@@ -21,3 +21,10 @@ https://atcoder.jp/contests/abc122/submissions/4700493
 - ABC144 E問題 Gluttony （Pythonに厳しいのは確かだが、Pythonで通した人も少なからずいる）
 - ABC075 D問題 Axis-Parallel Rectangle O(N^5)のPyPyで通せた。Pythonでも通るの?
   - Pythonで時間内に収めるために（定数倍の細かなテクニック）
+
+- ABC067 D問題 Fennec VS. Snuke 1429
+  - 解説と違うやり方でやったけど、コーナーに悩まされた。解説のほうがスッキリ書けると思う。
+  - 「マス i と j の距離を d(i, j) として，マス i の色は d(1, i) ≤ d(N, i) ならば黒，そうでなければ白」まで考察を進められなかったな……
+
+- AGC044 A問題 Pay to Win 1462 
+  - 解説AC 2020年6月28日
