@@ -41,12 +41,19 @@ while True:
 now = n-1
 distance = info[n-1][0]
 half = distance // 2
-while True:
-    now = info[now][1]
-    distance -= 1
-    if distance == half:
-        half_point = now
-        break
+
+if distance == half + 1:
+    # distance = 1の場合
+    snuke_side_marginal = now
+else:
+    while True:
+        now = info[now][1]
+        distance -= 1
+        if distance == half + 1:
+            snuke_side_marginal = now
+            break
+
+# print(snuke_side_marginal)
 
 info = [(-1, -1)] * n
 info[0] = (0, -1) # 点1からの距離, 1つ点1寄りの点の番号
@@ -61,7 +68,7 @@ while True:
     v = q.popleft()
     distance = info[v][0]
     for nei in neighbor[v]:
-        if info[nei][0] < 0 and v != half_point:
+        if info[nei][0] < 0 and nei != snuke_side_marginal:
             q.append(nei)
             info[nei] = (distance + 1, v)
             n_visited += 1
