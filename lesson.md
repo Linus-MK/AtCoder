@@ -50,3 +50,17 @@ https://youtu.be/ENSOy8u9K9I?t=7620
 AGC044 A問題 Pay to Win  
 逆から考えるパターン。
 
+---
+
+2020年7月19日
+https://atcoder.jp/contests/agc033/tasks/agc033_b
+LRUD Game
+
+Snuke the Wizardと関係があるのか無いのか……? https://atcoder.jp/contests/exawizards2019/tasks/exawizards2019_c
+
+* 相異なる目的を目指す2人が、手番を入れ替えつつ両者最適に行動するパターン
+  * このパターンはゲーム終了からさかのぼって考えるのが良い
+* 「この初期状態でどちらが勝つか?」と問われている
+  *  が、**どのような初期状態なら（コマがどこにあれば）後手が勝つか? に変換できるかがポイントだと思う**
+  * 与えられた初期状態が判定条件に入るか否かを求めれば良い
+
