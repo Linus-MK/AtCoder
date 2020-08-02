@@ -38,6 +38,7 @@ def is_valid(time):
 time_ok = 2 * 10 ** 12
 time_ng = -1  # 計算上、is_valid(-1) = Trueになることはあるが、二分探索の方法から言ってこれで正しいはず
 
+# めぐる式二分探索
 while abs(time_ok - time_ng) > 1:
     mid = (time_ok + time_ng) // 2
     if is_valid(mid):
