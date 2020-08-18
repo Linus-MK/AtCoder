@@ -28,3 +28,10 @@ https://atcoder.jp/contests/abc122/submissions/4700493
 
 - AGC044 A問題 Pay to Win 1462 
   - 解説AC 2020年6月28日
+
+- ABC170 D問題
+  kyopro_friendsさんの解説 https://twitter.com/kyopro_friends/status/1272165768390574082
+
+- ABC159 E問題 dividing chocolate 1391
+  - 方針はすぐ立つが、実装に苦労するパターンの問題。ミスらずに一発で書けるかが勝負。
+  - コンテストでは2つミスしてWA。 https://github.com/Linus-MK/AtCoder/commit/86dfc07ad060803467608c813b34f3b7194d89b3
