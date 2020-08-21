@@ -64,3 +64,13 @@ Snuke the Wizardと関係があるのか無いのか……? https://atcoder.jp/c
   *  が、**どのような初期状態なら（コマがどこにあれば）後手が勝つか? に変換できるかがポイントだと思う**
   * 与えられた初期状態が判定条件に入るか否かを求めれば良い
 
+
+---
+
+https://twitter.com/kyopro_friends/status/1289921719444967426
+https://atcoder.jp/contests/abc174/tasks/abc174_f
+Range Set Queryは1つ前の同じ数の位置だけ分かってれば良い→BIT（Fenwick Tree）
+
+chokudai_speedrun_001_j.py も同様の構造だが、まだ頭の中で整理できてない。転倒数の考え方を忘れたなぁ……
+
+そう考えると「サプリメント」https://atcoder.jp/contests/abc017/tasks/abc017_4 も同様の話ではないか? まだ解いてないけど。
