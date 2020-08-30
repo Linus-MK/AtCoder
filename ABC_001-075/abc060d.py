@@ -50,9 +50,9 @@ valid_max_num = w_limit // weight_base
 ans = 0
 for num in range(valid_min_num, min(valid_max_num, n) + 1):
     weight_rest = w_limit - weight_base * num
-    if not 0 <= weight_rest:  # ここがないとREになるらしい。理由を要検討。
-        continue
-    elif weight_rest >= 3*n:
+    # 残りの重さが十分大きい場合に、配列の範囲外を参照してエラーになる。
+    # またこの場合を飛ばすことはできない（w_1が1000、W = 4500のときで荷物4つの場合にはweight_restが十分大きくなる）
+    if weight_rest >= 3*n:
         weight_rest = 3*n
 
     # print(n-1, num, weight_rest)
