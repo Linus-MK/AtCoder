@@ -12,6 +12,10 @@ init_color = [list(map(int, input().split())) for _ in range(n)]
 
 cost = [[0 for _ in range(c)] for _ in range(3)]
 
+# 公式解説は
+# (i + j)%3 = 0, 1, 2 の場合それぞれにおいて、どの色で最初に塗られているマスがいくつあるかをあらかじめ計算しておく
+# で、計算量はO(C^3 + N^2)に落ちる。総和なので線形性が使えて、マスの個数さえ分かれば掛け算足し算で求まるため。
+
 for row in range(n):
     for col in range(n):
         before = init_color[row][col] - 1
