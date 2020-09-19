@@ -2,6 +2,7 @@
 # https://atcoder.jp/contests/abc114/tasks/abc114_d ABC114 D 756
 # https://atcoder.jp/contests/abc110/tasks/abc110_d ABC110 D Factorization (まだ解いてない)
 # https://atcoder.jp/contests/abc169/tasks/abc169_d ABC169 D Div Game
+# https://atcoder.jp/contests/arc034/tasks/arc034_3 ARC034 C 約数かつ倍数
 
 def factorize(n):
     '''
@@ -16,13 +17,26 @@ def factorize(n):
     factor = {}
     div = 2
     while True:
+        if div * div > n:
+            factor[n] = factor.get(n, 0) + 1
+            return factor
+
         if n % div == 0:
             n //= div
             factor[div] = factor.get(div, 0) + 1
-            if n == 1:
-                return factor
         else:
             div += 1
+
+
+def factor_product(a, b):
+    '''
+    素因数分解のdict a, bを受け取って、
+    積に対応するdictを返す
+    '''
+    product = a.copy()
+    for k, v in b.items():
+        product[k] = product.get(k, 0) + v
+    return product
 
 # ABC149Cより
 def is_prime(num):
@@ -34,3 +48,17 @@ def is_prime(num):
             return False
         d += 1
     return True
+
+# 約数列挙
+# ABC136Eより
+def get_divisors(num):
+    divisors = []
+    for d in range(1, num):
+        if d * d > num:
+            break
+        if num % d == 0: #約数
+            divisors.append(d)
+            if d * d != num:  # numの平方根の場合は重複するので追加しない
+                divisors.append(int(summ // d))
+
+    return divisors
