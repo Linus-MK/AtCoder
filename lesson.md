@@ -85,3 +85,10 @@ chokudai_speedrun_001_j.py も同様の構造だが、まだ頭の中で整理�
 t_t = list(map(list, zip(*t)))
 https://atcoder.jp/contests/agc023/submissions/2429320  
 anagohirameさんのコードより
+
+---
+
+2020年9月22日
+
+https://atcoder.jp/contests/aising2020/tasks/aising2020_d  
+「必要なところだけ数表を作って高速化するタイプだ、Pay to Winと同じじゃん」と思ったけど、高速化する必要はなかった……
