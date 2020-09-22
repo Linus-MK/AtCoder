@@ -14,7 +14,7 @@
 # なお複数種目の競技が同率1位になった場合は全て一度に取り除いて良い。
 # これで空集合までやって、最大が最小のものを出力すればOK! 
 
-# 1510ms
+# 1312ms
 
 n, m = list(map(int, input().split()))
 preference = [list(map(lambda x: int(x) - 1, input().split())) for _ in range(n)] # 1-index → 0-index
@@ -26,9 +26,9 @@ while held_sports:
     # 各競技に参加する人数を求める
     parti = [0] * m
     for pref in preference:
-        for s in range(m):
-            if pref[s] in held_sports:
-                parti[pref[s]] += 1
+        for s in pref:
+            if s in held_sports:
+                parti[s] += 1
                 break
     
     temp = max(parti)
