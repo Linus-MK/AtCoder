@@ -14,7 +14,7 @@
 # なお複数種目の競技が同率1位になった場合は全て一度に取り除いて良い。
 # これで空集合までやって、最大が最小のものを出力すればOK! 
 
-# 1312ms
+# 734ms
 
 n, m = list(map(int, input().split()))
 preference = [list(map(lambda x: int(x) - 1, input().split())) for _ in range(n)] # 1-index → 0-index
@@ -34,8 +34,7 @@ while held_sports:
     temp = max(parti)
     ans = min(ans, temp)
     # 集合から最大人数を取った要素を除外
-    for idx, par in enumerate(parti):
-        if par == temp:
-            held_sports.remove(idx)
+    indices = [i for i,val in enumerate(parti) if val == temp]
+    held_sports = held_sports - set(indices)
 
 print(ans)
