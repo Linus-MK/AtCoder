@@ -52,6 +52,9 @@ def is_prime(num):
 # 約数列挙
 # ABC136Eより
 def get_divisors(num):
+    if num == 1:
+        return [1]
+    
     divisors = []
     for d in range(1, num):
         if d * d > num:
@@ -59,6 +62,6 @@ def get_divisors(num):
         if num % d == 0: #約数
             divisors.append(d)
             if d * d != num:  # numの平方根の場合は重複するので追加しない
-                divisors.append(int(summ // d))
+                divisors.append(int(num // d))
 
     return divisors
