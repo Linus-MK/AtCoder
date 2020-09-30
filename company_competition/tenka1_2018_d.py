@@ -4,7 +4,7 @@
 # あとはN個のチームの総当たり戦を作るイメージで構成すれば良い。
 # kから考えるのがポイントのように思う。
 
-# TLEは消えた。実行時間124ms
+# TLEは消えた。実行時間104ms
 # combi自体は悪くない。combiを何周もイテレートすると計算量がO(k^3)=O(N√N)になって厳しい。
 # combiを1周にして計算量をO(k^2)=O(N)に抑える。
 
@@ -18,7 +18,7 @@ while True:
         print('Yes')
         print(k)
 
-        combi = list(itertools.combinations(range(k), 2))
+        combi = itertools.combinations(range(k), 2)
 
         dict_ = {i: [] for i in range(k)}
         for idx, tup in enumerate(combi):
