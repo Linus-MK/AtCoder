@@ -5,6 +5,7 @@
 # Longest Increase Subsequence
 # ABC006−解説 https://www.slideshare.net/chokudai/abc006
 # いかたこのたこつぼ https://ikatakos.com/pot/programming_algorithm/dynamic_programming/longest_common_subsequence
+# ABC134Eがこれとほぼ同等って公式解説に書いてあるけどよく分かってない https://atcoder.jp/contests/abc134/tasks/abc134_e
 
 # 動的計画法と二分探索を使ってO(NlogN)で求められる
 
