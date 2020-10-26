@@ -22,7 +22,9 @@ AGC032 B問題 問題中に明示的に登場したわけではないが、完�
 ---
 
 ABC097 D問題 解説YouTube 証明の冒頭部分：「グラフに閉路があったとしても、適当に切って全域木であるとしてよい。」問題によっては使えるアイディアかも  
-https://youtu.be/5PLS2J4cVmY?t=2161
+https://youtu.be/5PLS2J4cVmY?t=2161  
+ARC106 B問題 証明で使っていた。実際に解くときはここまで厳密に証明することは無いと思うが、考え方の1つの引き出しとして。  
+https://atcoder.jp/contests/arc106/editorial/247  
 
 ---
 
