@@ -10,7 +10,9 @@
 # PyPy3だと通る（マジかよ）
 # 計算量は外側のループから順に、2**n * n * m
 # 2**16 * 16 * (16*15)/ 2 = 125829120
-# あれ1億2500万だぞ……!? しかもこのコードは途中breakしないから全部回るぞ……何で通ったの???
+# あれ1億2500万だぞ……!? 途中breakを追加した
+# PyPy3 324ms
+# Python TLE(この問題は制約3sec)
 
 n, m = list(map(int, input().split()))
 
@@ -27,6 +29,7 @@ for idx in range(1, 2**n):
                 # S-v がfitst, vがsecondとなる対があるか
                 if (2**pair[0] & idx > 0) and pair[1] == digit:
                     may_be_first = False
+                    break  # 高速化
             if may_be_first:
                 dp[idx] += dp[idx - 2**digit]
 
