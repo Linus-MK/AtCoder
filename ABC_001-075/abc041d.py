@@ -8,10 +8,9 @@
 # 解答：問題ない。集合(1,2,3)の数を考えるときに、集合(1,2)のカウントは（3が先頭に来ないから）合計されないので、最終的な結果に影響しない。
 
 # PyPy3だと通る（マジかよ）
-# 計算量は外側のループから順に、2**n * n * m
-# 2**16 * 16 * (16*15)/ 2 = 125829120
-# あれ1億2500万だぞ……!? 途中breakを追加した
-# PyPy3 324ms
+# 計算量は外側のループから順に、2**n * (n + m)
+# 2**16 * (16 + (16*15)/ 2) = 8912896
+# PyPy3 243ms
 # Python TLE(この問題は制約3sec)
 
 n, m = list(map(int, input().split()))
@@ -22,15 +21,16 @@ condition = [list(map(lambda x: int(x)-1, input().split())) for _ in range(m)]
 dp = [0] * (2**n)
 dp[0] = 1 # 空集合をトポロジカルソートする場合の数
 for idx in range(1, 2**n):
+    # 先に各digitが1位になる可能性があるか否かをまとめて計算する
+    may_be_first = [True] * n
+    for pair in condition:
+        # S-v がfitst, vがsecondとなる対があるか
+        if (2**pair[0] & idx > 0) and (2**pair[1] & idx > 0):
+            may_be_first[pair[1]] = False
+
     for digit in range(n):
         if 2**digit & idx > 0:  # digitに対応する頂点vが、今考えている頂点集合Sに含まれていて
-            may_be_first = True
-            for pair in condition:
-                # S-v がfitst, vがsecondとなる対があるか
-                if (2**pair[0] & idx > 0) and pair[1] == digit:
-                    may_be_first = False
-                    break  # 高速化
-            if may_be_first:
+            if may_be_first[digit]:
                 dp[idx] += dp[idx - 2**digit]
 
 print(dp[-1])
