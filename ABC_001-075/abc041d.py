@@ -10,8 +10,8 @@
 # PyPy3だと通る（マジかよ）
 # 計算量は外側のループから順に、2**n * (n + m)
 # 2**16 * (16 + (16*15)/ 2) = 8912896
-# PyPy3 169ms
-# Python 1626ms(この問題は制約3sec)
+# PyPy3 270ms
+# Python 1032ms(この問題は制約3sec)
 
 import sys
 input = sys.stdin.readline
@@ -25,13 +25,14 @@ dp[0] = 1 # 空集合をトポロジカルソートする場合の数
 for idx in range(1, 2**n):
     # 先に各digitが1位になる可能性があるか否かをまとめて計算する
     may_be_first = [True] * n
+    digit_set = {digit for digit in range(n) if 1<<digit & idx}
     for pair in condition:
         # S-v がfitst, vがsecondとなる対があるか
-        if (1<<pair[0] & idx) and (1<<pair[1] & idx):
+        if pair[0] in digit_set and pair[1] in digit_set:
             may_be_first[pair[1]] = False
 
     for digit in range(n):
-        if 1<<digit & idx:  # digitに対応する頂点vが、今考えている頂点集合Sに含まれていて
+        if digit in digit_set:  # digitに対応する頂点vが、今考えている頂点集合Sに含まれていて
             if may_be_first[digit]:
                 dp[idx] += dp[idx - (1<<digit)]
 
