@@ -27,11 +27,11 @@ for idx in range(1, 2**n):
     may_be_first = [True] * n
     for pair in condition:
         # S-v がfitst, vがsecondとなる対があるか
-        if (2**pair[0] & idx > 0) and (2**pair[1] & idx > 0):
+        if (2**pair[0] & idx) and (2**pair[1] & idx):
             may_be_first[pair[1]] = False
 
     for digit in range(n):
-        if 2**digit & idx > 0:  # digitに対応する頂点vが、今考えている頂点集合Sに含まれていて
+        if 2**digit & idx:  # digitに対応する頂点vが、今考えている頂点集合Sに含まれていて
             if may_be_first[digit]:
                 dp[idx] += dp[idx - 2**digit]
 
