@@ -10,9 +10,11 @@
 # PyPy3だと通る（マジかよ）
 # 計算量は外側のループから順に、2**n * (n + m)
 # 2**16 * (16 + (16*15)/ 2) = 8912896
-# PyPy3 243ms
+# PyPy3 230ms
 # Python TLE(この問題は制約3sec)
 
+import sys
+input = sys.stdin.readline
 n, m = list(map(int, input().split()))
 
 condition = [list(map(lambda x: int(x)-1, input().split())) for _ in range(m)]
