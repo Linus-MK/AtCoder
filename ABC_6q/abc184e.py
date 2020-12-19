@@ -27,7 +27,7 @@ for i in range(h):
         elif masu[i][j] == 'G':
             goal_h = i
             goal_w = j
-        elif masu[i][j] != '.':
+        elif masu[i][j] != '.' and masu[i][j] != '#':
             warp_points.add((i, j))
             warp_points_visited[masu[i][j]] = False
             # warp_points_char[masu[i][j]] = warp_points_char.get(masu[i][j], set()).add((i, j))
@@ -53,8 +53,8 @@ while len(queue) > 0:
 
                             queue.append((next_h, next_w))
                             distance[next_h][next_w] = distance[now_h][now_w] + 1
-                break
                 warp_points_visited[char] = True
+                break
 
     for dhi, dwi in zip(dh, dw):
         next_h = now_h + dhi
