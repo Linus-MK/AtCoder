@@ -41,6 +41,7 @@ def is_same(x, y):
 par = list(range(n))  # 当該要素の親 最初は自分自身
 rank = [0]*n  # 木の深さ
 size = [1]*n  # 集合の要素数 蟻本にはないけど、使うこともあるので入れとこう
+# 注意：要素iの属する連結成分の要素数は、size[find_root(i)]である
 
 edges = [list(map(int, input().split())) for _ in range(m)]
 edges = [[b[0]-1, b[1]-1] for b in edges]  # 1-idx -> 0-idx
