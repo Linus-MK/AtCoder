@@ -17,6 +17,7 @@ for i in range(k):
 mod = 998244353
 # rev_3 = pow(3, -1, mod)  # PyPyだと不可
 rev_3 = pow(3, mod-2, mod)
+rev_3_times_2 = (2 * rev_3) % mod
 dp = [[0 for _ in range(w+1)] for _ in range(h+1)]  # 番兵として一番右と一番下に一行一列追加
 
 dp[0][0] = pow(3, h*w-k, mod)
@@ -36,8 +37,9 @@ for row in range(h):
             # つまり全体の3分の2とすれば良い。右についても同様。
             # masu[row+1][col] += masu[row][col] * 2 / 3
             # masu[row][col+1] += masu[row][col] * 2 / 3
-            dp[row+1][col] += (dp[row][col] * 2 * rev_3) % mod
-            dp[row][col+1] += (dp[row][col] * 2 * rev_3) % mod
+            temp = (dp[row][col] * rev_3_times_2) % mod
+            dp[row+1][col] += temp
+            dp[row][col+1] += temp
 
 print(dp[h-1][w-1] % mod)
 
