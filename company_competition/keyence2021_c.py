@@ -6,10 +6,12 @@
 
 h, w, k = list(map(int, input().split()))
 
-masu = [['-' for _ in range(w)] for _ in range(h)]
+# masu = [['-' for _ in range(w)] for _ in range(h)]
+masu_dict = {}
 for i in range(k):
     h0, w0, char = input().split()
-    masu[int(h0)-1][int(w0)-1] = char
+    masu_dict[(int(h0)-1, int(w0)-1)] = char
+    # masu[int(h0)-1][int(w0)-1] = char
 
 # 当該のマスに応じて次のマスに行けるかどうかが決まるので、配るDPで書いたほうがよい。
 # 集めるDPだと上のマスと左のマスに応じて当該マスをどうするかになるので二度手間っぽい。
@@ -25,7 +27,7 @@ for row in range(h):
     for col in range(w):
         dp[row][col] = dp[row][col] % mod
 
-        ch = masu[row][col]
+        ch = masu_dict.get((row, col), '-')
         if ch == 'D':
             dp[row+1][col] += dp[row][col]
         elif ch == 'R':
