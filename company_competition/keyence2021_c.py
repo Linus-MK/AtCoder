@@ -35,7 +35,7 @@ for row in range(h):
         elif ch == 'X':
             dp[row+1][col] += dp[row][col]
             dp[row][col+1] += dp[row][col]
-        elif ch == '-':
+        else:
             # 3^(HW-K)通りの全ての盤面を考えよう。このうち、下に進めるのはこのマスにD,Xを書いた 3^(HW-K) * 2 / 3とおりである。
             # つまり全体の3分の2とすれば良い。右についても同様。
             # dp[row+1][col] += dp[row][col] * 2 / 3
