@@ -25,18 +25,19 @@ for row in range(h):
     for col in range(w):
         dp[row][col] = dp[row][col] % mod
 
-        if masu[row][col] == 'D':
+        ch = masu[row][col]
+        if ch == 'D':
             dp[row+1][col] += dp[row][col]
-        elif masu[row][col] == 'R':
+        elif ch == 'R':
             dp[row][col+1] += dp[row][col]
-        elif masu[row][col] == 'X':
+        elif ch == 'X':
             dp[row+1][col] += dp[row][col]
             dp[row][col+1] += dp[row][col]
-        elif masu[row][col] == '-':
+        elif ch == '-':
             # 3^(HW-K)通りの全ての盤面を考えよう。このうち、下に進めるのはこのマスにD,Xを書いた 3^(HW-K) * 2 / 3とおりである。
             # つまり全体の3分の2とすれば良い。右についても同様。
-            # masu[row+1][col] += masu[row][col] * 2 / 3
-            # masu[row][col+1] += masu[row][col] * 2 / 3
+            # dp[row+1][col] += dp[row][col] * 2 / 3
+            # dp[row][col+1] += dp[row][col] * 2 / 3
             temp = (dp[row][col] * rev_3_times_2) % mod
             dp[row+1][col] += temp
             dp[row][col+1] += temp
