@@ -12,7 +12,7 @@ n, m, r = list(map(int, input().split()))
 destination = list(map(int, input().split()))
 destination = [x-1 for x in destination]  # 1-index → 0-index
 
-infinity = 10*5*200*2 
+infinity = 10**5*200*2 
 distance = [[infinity for _ in range(n)] for _ in range(n)]
 for i in range(n):
     distance[i][i] = 0
@@ -25,7 +25,7 @@ for i in range(m):
 warshall_floyd(distance, n)
 
 import itertools
-ans = 10*10
+ans = 10**10
 for perm in itertools.permutations(range(r)):
     d = 0
     for i in range(r-1):
