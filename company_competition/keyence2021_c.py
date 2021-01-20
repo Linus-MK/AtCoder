@@ -4,6 +4,11 @@
 # いやでもこっちのほうが簡単か。3の逆元を作れば良いから。
 # こっちでやる！！
 
+# 考え方としては
+# dp[0][0] = pow(3, h*w-k, mod)
+# で始めるのがよい。が、これを最初にやるとTLEになってしまう……
+# 
+
 h, w, k = list(map(int, input().split()))
 
 # masu = [['-' for _ in range(w)] for _ in range(h)]
@@ -22,12 +27,12 @@ rev_3 = pow(3, mod-2, mod)
 rev_3_times_2 = (2 * rev_3) % mod
 dp = [[0 for _ in range(w+1)] for _ in range(h+1)]  # 番兵として一番右と一番下に一行一列追加
 
-dp[0][0] = pow(3, h*w-k, mod)
+dp[0][0] = 1
 for row in range(h):
     for col in range(w):
         dp[row][col] = dp[row][col] % mod
 
-        ch = masu_dict.get((row, col), '-')
+        ch = masu_dict.get((row, col))
         if ch == 'D':
             dp[row+1][col] += dp[row][col]
         elif ch == 'R':
@@ -44,7 +49,7 @@ for row in range(h):
             dp[row+1][col] += temp
             dp[row][col+1] += temp
 
-print(dp[h-1][w-1] % mod)
+print(dp[h-1][w-1] * pow(3, h*w-k, mod) % mod)
 
 # dp[i][j] := (1, 1)から(i, j)のマスまでの長方形のマスの未記入をtとしたとき、3^t通りについて(i, j)に到達するような移動経路の場合の数の和
 # にしよう。
