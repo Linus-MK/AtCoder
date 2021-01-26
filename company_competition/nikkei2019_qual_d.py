@@ -49,13 +49,12 @@ for i, deg in enumerate(in_degree):
         # 入次数が0なので、トポロジカルソートの始点にできる。今回は1つの頂点しか無いけど、一般には複数
         queue.append(i)
 
-# visited = [False for i in range(n)]
-ans = []
+topological_sorted = []  # 実は今回は不要
 position = [-1] * n
 present_pos = 0
 while len(queue) > 0:
     vertex = queue.popleft()
-    ans.append(vertex)
+    topological_sorted.append(vertex)
     position[vertex] = present_pos
     present_pos += 1
     for nei in neighbor[vertex]:
