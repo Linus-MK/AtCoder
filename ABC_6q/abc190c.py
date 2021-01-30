@@ -1,3 +1,6 @@
+# if set_idx & (1<<bit): と書くべきところを
+# if set_idx & bit: にしててバグらせた。
+
 n, m = list(map(int, input().split()))
 
 condition = []
