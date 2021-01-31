@@ -51,30 +51,18 @@ for i in range(n):
 
 # print(count_dict)
 
-table = [[0 for _ in range(20)] for _ in range(20)]
-for i in reversed(range(20)):
-    for j in reversed(range(20)):
-        if j+1 < 20:
-            table[i][j] = table[i][j+1]
-        for i0 in range(19, i-1, -1):
-            table[i][j] += count_dict.get((i0-10, j-10), 0)
-
 ans = 0
 for i in range(-9, 9+1):
     for j in range(-9, 9+1):
-
+ 
         count = count_dict.get((i, j), 0)
         if count > 0:
-            temp = table[-i+10][-j+10]
+            temp = 0
+            for factor_2 in range(-i, 9+1):
+                for factor_5 in range(-j, 9+1):
+                    temp += count_dict.get((factor_2, factor_5), 0)
             if i >= 0 and j >= 0:
                 temp -= 1
-            ans += count * temp
-            # print(-i, -j, temp)
-
-# temp = 0
-# for factor_2 in range(0, 9+1):
-#     for factor_5 in range(0, 9+1):
-#         temp += count_dict.get((factor_2, factor_5), 0)
-
-# ans += temp * (temp-1) // 2
+            ans +=  count * temp
+ 
 print(ans//2)
