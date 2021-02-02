@@ -7,10 +7,10 @@ if len(s) == 1:
         print('No')
     exit()
 
-if s == 2:
+if len(s) == 2:
     if int(s) % 8 == 0:
         print('Yes')
-    elif int(s[0]+s[1]) % 8 == 0:
+    elif int(s[1]+s[0]) % 8 == 0:
         print('Yes')
     else:
         print('No')
