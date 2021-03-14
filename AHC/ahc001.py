@@ -36,7 +36,8 @@ for i in range(n):
 for i in range(n):
     for j in range(i+1, n):
         count = 0
-        while count <= 30:
+        count_limit = 30
+        while count <= count_limit:
             if overlap(ans_list[i], ans_list[j]):
 
                 if random.random() < 0.5:
@@ -55,11 +56,12 @@ for i in range(n):
                     ans_list[j][1] = max(ys[j]-width, 0)
                     ans_list[j][2] = min(xs[j]+1+width, 10000)
                     ans_list[j][3] = min(ys[j]+1+width, 10000)
+                count += 1
             
             else:
                 break
         
-        if overlap(ans_list[i], ans_list[j]):
+        if count > count_limit and overlap(ans_list[i], ans_list[j]):
             # 少しずつ縮めていってもまだ重なってるようなら、強制的に縦横1にします
             ans_list[i][0] = xs[i]
             ans_list[i][1] = ys[i]
