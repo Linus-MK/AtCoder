@@ -1,9 +1,3 @@
-# 使える問題：
-# https://atcoder.jp/contests/abc114/tasks/abc114_d ABC114 D 756
-# https://atcoder.jp/contests/abc110/tasks/abc110_d ABC110 D Factorization (まだ解いてない)
-# https://atcoder.jp/contests/abc169/tasks/abc169_d ABC169 D Div Game
-# https://atcoder.jp/contests/arc034/tasks/arc034_3 ARC034 C 約数かつ倍数
-
 def factorize(n):
     '''
     素因数分解をする。
